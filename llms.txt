@@ -1,0 +1,19 @@
+# HealMent
+
+> HealMent is a free journaling app for iPhone and Android that helps people look after their mental health. It offers 200+ guided prompts, your own custom prompts, mood tracking, an insight dashboard, bookmarks and dark and light themes. Journal entries stay on the user's phone.
+
+## Pages
+
+- [Home](https://healment.cend.in/): what the app does, features and download links
+- [Contact](https://healment.cend.in/contact.html): how to get help or share feedback
+- [Privacy Policy](https://healment.cend.in/privacy_policy.html): how information is handled
+- [Terms of Service](https://healment.cend.in/terms_of_service.html): rules for using the app and website
+
+## Download
+
+- [App Store (iPhone)](https://apps.apple.com/us/app/healment/id1658941963)
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment)
+
+## Creator
+
+- [Srikanth Nandiraju](https://srikanth.nandiraju.com/)

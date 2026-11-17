@@ -1,381 +1,266 @@
-/**
- * HEALMENT - ULTRA MODERN WEB APPLICATION SCRIPT
- * Lightweight, zero dependencies, high performance vanilla JavaScript
- */
-
+/* HealMent — page behaviour. Small, no libraries (the animation player loads on demand). */
 (function () {
   'use strict';
 
-  // --- 1. THEME SWITCHER (Dark / Light Mode) ---
-  const THEME_STORAGE_KEY = 'healment_theme';
-  const themeToggles = document.querySelectorAll('.theme-toggle-btn');
-  const docElement = document.documentElement;
+  var root = document.documentElement;
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  function getPreferredTheme() {
-    const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    if (saved) return saved;
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  function store(key, val) {
+    try { if (val === undefined) return localStorage.getItem(key); localStorage.setItem(key, val); } catch (e) {}
+    return null;
   }
 
-  function applyTheme(theme) {
-    docElement.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-    
-    // Update theme icons on all toggles
-    themeToggles.forEach(btn => {
-      const sunIcon = btn.querySelector('.icon-sun');
-      const moonIcon = btn.querySelector('.icon-moon');
-      const labelText = btn.querySelector('.theme-label-text');
-      
-      if (sunIcon && moonIcon) {
-        if (theme === 'light') {
-          sunIcon.style.display = 'none';
-          moonIcon.style.display = 'block';
-        } else {
-          sunIcon.style.display = 'block';
-          moonIcon.style.display = 'none';
-        }
-      }
-      if (labelText) {
-        labelText.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
-      }
-    });
-
-    // Also sync the mini preview inside the Bento Card if present
-    const themeIndicator = document.getElementById('current-theme-name');
-    if (themeIndicator) {
-      themeIndicator.textContent = theme === 'light' ? 'Light Theme Active' : 'Dark Theme Active';
-    }
+  /* ---------- Theme ---------- */
+  function setTheme(theme) {
+    // Switch instantly: no colour transitions firing across the whole page
+    root.setAttribute('data-theme', theme);
+    store('healment_theme', theme);
+    var meta = $('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'light' ? '#fbfaff' : '#0e1020');
   }
-
-  const initialTheme = getPreferredTheme();
-  applyTheme(initialTheme);
-
-  themeToggles.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const current = docElement.getAttribute('data-theme') || 'dark';
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-    });
+  function toggleTheme() {
+    setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  }
+  ['themeToggle', 'themeDemo'].forEach(function (id) {
+    var b = document.getElementById(id);
+    if (b) b.addEventListener('click', toggleTheme);
   });
 
-  // Listen for system theme changes if user has no stored preference
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem(THEME_STORAGE_KEY)) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  });
-
-
-  // --- 2. STICKY NAVBAR & ACTIVE LINK TRACKING ---
-  const header = document.querySelector('.site-header');
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  const backToTopBtn = document.getElementById('backToTop');
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    // Header shadow on scroll
-    if (header) {
-      if (scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    }
-
-    // Back to top visibility
-    if (backToTopBtn) {
-      if (scrollY > 500) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
-    }
-
-    // Active link highlighting
-    const sections = document.querySelectorAll('section[id]');
-    let currentId = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 120;
-      const height = sec.offsetHeight;
-      if (scrollY >= top && scrollY < top + height) {
-        currentId = sec.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentId}`) {
-        link.classList.add('active');
-      }
-    });
-  }, { passive: true });
-
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  /* ---------- Menu, header link highlight, back to top ---------- */
+  var menuBtn = document.getElementById('menuToggle');
+  var links = document.getElementById('navLinks');
+  function setMenu(open) {
+    if (!links || !menuBtn) return;
+    links.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  if (menuBtn && links) {
+    menuBtn.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
+    $$('a', links).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
   }
 
-
-  // --- 3. MOBILE MENU TOGGLE ---
-  const mobileToggle = document.querySelector('.mobile-menu-toggle');
-  const navMenu = document.querySelector('.nav-links');
-
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      mobileToggle.setAttribute('aria-expanded', isOpen);
-      const icon = mobileToggle.querySelector('.hamburger-icon');
-      if (icon) {
-        icon.textContent = isOpen ? '✕' : '☰';
-      }
-    });
-
-    // Close menu when a link is clicked
-    navMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-        const icon = mobileToggle.querySelector('.hamburger-icon');
-        if (icon) icon.textContent = '☰';
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        toTop.classList.toggle('show', window.scrollY > 600);
+        ticking = false;
       });
-    });
+    }, { passive: true });
+    toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 
-
-  // --- 4. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
-  const animatedElements = document.querySelectorAll('.fade-in-up');
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
-        }
+    var navAnchors = $$('.nav-links a[href^="#"]');
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navAnchors.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
       });
-    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
-
-    animatedElements.forEach(el => observer.observe(el));
-  } else {
-    animatedElements.forEach(el => el.classList.add('in-view'));
-  }
-
-
-  // --- 5. INTERACTIVE 200+ GUIDED PROMPT EXPLORER ---
-  const promptsDatabase = [
-    // Anxiety & Relief
-    { category: 'anxiety', categoryName: 'Calming Anxiety', text: 'What is one worry currently on your mind, and what evidence is there that everything will be okay?' },
-    { category: 'anxiety', categoryName: 'Calming Anxiety', text: 'Name 3 things within your control right now, and let go of 1 thing outside your control.' },
-    { category: 'anxiety', categoryName: 'Calming Anxiety', text: 'If your best friend were feeling this exact stress, what compassionate words would you say to them?' },
-    { category: 'anxiety', categoryName: 'Calming Anxiety', text: 'Breathe deeply. Describe the physical sensation in your body right now without judging it.' },
-
-    // Gratitude & Positivity
-    { category: 'gratitude', categoryName: 'Gratitude & Positivity', text: 'What small moment or gesture made you smile today, even for a brief second?' },
-    { category: 'gratitude', categoryName: 'Gratitude & Positivity', text: 'Who is one person in your life that you are deeply grateful for, and why?' },
-    { category: 'gratitude', categoryName: 'Gratitude & Positivity', text: 'What is an everyday comfort or convenience you often overlook that you appreciate today?' },
-    { category: 'gratitude', categoryName: 'Gratitude & Positivity', text: 'What is a past challenge that you overcame which made you stronger today?' },
-
-    // Self-Reflection
-    { category: 'reflection', categoryName: 'Self-Reflection', text: 'What emotions have been the most persistent this week, and what might they be trying to tell you?' },
-    { category: 'reflection', categoryName: 'Self-Reflection', text: 'How have your daily habits supported or hindered your mental peace over the last few days?' },
-    { category: 'reflection', categoryName: 'Self-Reflection', text: 'In what areas of your life are you currently being too hard on yourself?' },
-    { category: 'reflection', categoryName: 'Self-Reflection', text: 'What is one boundary you need to set or maintain to protect your energy?' },
-
-    // Growth & Goals
-    { category: 'growth', categoryName: 'Growth & Goals', text: 'What is one small step you can take tomorrow that brings you closer to personal peace?' },
-    { category: 'growth', categoryName: 'Growth & Goals', text: 'What belief about yourself would you like to gently rewrite or let go of?' },
-    { category: 'growth', categoryName: 'Growth & Goals', text: 'What does living a truly balanced life look like to you in this current chapter?' },
-
-    // Evening Wind-down
-    { category: 'evening', categoryName: 'Evening Wind-down', text: 'What can you release from today before going to sleep so tomorrow can start fresh?' },
-    { category: 'evening', categoryName: 'Evening Wind-down', text: 'Celebrate one win from today, no matter how small it might seem.' },
-    { category: 'evening', categoryName: 'Evening Wind-down', text: 'What did your body and mind need today, and did you give it space?' }
-  ];
-
-  let currentCategory = 'all';
-  const promptCategoryTag = document.getElementById('promptCategoryTag');
-  const promptTextQuote = document.getElementById('promptTextQuote');
-  const shufflePromptBtn = document.getElementById('shufflePromptBtn');
-  const copyPromptBtn = document.getElementById('copyPromptBtn');
-  const promptCategoryTabs = document.querySelectorAll('.prompt-tab-btn');
-
-  function getFilteredPrompts() {
-    if (currentCategory === 'all') return promptsDatabase;
-    return promptsDatabase.filter(p => p.category === currentCategory);
-  }
-
-  function displayRandomPrompt() {
-    const list = getFilteredPrompts();
-    if (list.length === 0) return;
-    const randomItem = list[Math.floor(Math.random() * list.length)];
-
-    if (promptTextQuote && promptCategoryTag) {
-      promptTextQuote.style.opacity = '0';
-      promptCategoryTag.style.opacity = '0';
-      
-      setTimeout(() => {
-        promptTextQuote.textContent = `“${randomItem.text}”`;
-        promptCategoryTag.textContent = randomItem.categoryName;
-        promptTextQuote.style.opacity = '1';
-        promptCategoryTag.style.opacity = '1';
-      }, 150);
-    }
-  }
-
-  if (shufflePromptBtn) {
-    shufflePromptBtn.addEventListener('click', displayRandomPrompt);
-  }
-
-  if (copyPromptBtn && promptTextQuote) {
-    copyPromptBtn.addEventListener('click', () => {
-      const textToCopy = promptTextQuote.textContent.replace(/^“|”$/g, '');
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalText = copyPromptBtn.innerHTML;
-        copyPromptBtn.innerHTML = '✓ Copied!';
-        setTimeout(() => {
-          copyPromptBtn.innerHTML = originalText;
-        }, 1800);
-      }).catch(() => {
-        copyPromptBtn.innerHTML = 'Prompt ready!';
-      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    navAnchors.forEach(function (a) {
+      var t = document.getElementById(a.getAttribute('href').slice(1));
+      if (t) spy.observe(t);
     });
   }
 
-  promptCategoryTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      promptCategoryTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      currentCategory = tab.dataset.category || 'all';
-      displayRandomPrompt();
+  /* ---------- Animated illustrations (Lottie) ----------
+     The player and each animation file are fetched only when the picture is about to be seen. */
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var playerPromise = null;
+  function loadPlayer() {
+    if (playerPromise) return playerPromise;
+    playerPromise = new Promise(function (resolve, reject) {
+      if (window.lottie) return resolve(window.lottie);
+      var s = document.createElement('script');
+      s.src = 'js/vendor/lottie_light.min.js';
+      s.async = true;
+      s.onload = function () { resolve(window.lottie); };
+      s.onerror = reject;
+      document.head.appendChild(s);
     });
-  });
+    return playerPromise;
+  }
 
-  // Initialize initial prompt
-  displayRandomPrompt();
+  function mountAnimation(el) {
+    var path = el.getAttribute('data-lottie');
+    Promise.all([loadPlayer(), fetch(path).then(function (r) { return r.json(); })]).then(function (res) {
+      var anim = res[0].loadAnimation({
+        container: el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        animationData: res[1],
+        rendererSettings: { progressiveLoad: true, preserveAspectRatio: 'xMidYMid meet' }
+      });
+      if (reduceMotion) { anim.goToAndStop(Math.floor(anim.totalFrames / 2), true); return; }
+      // Play only while visible: saves battery and keeps scrolling smooth
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { en.isIntersecting ? anim.play() : anim.pause(); });
+      }, { threshold: 0.15 }).observe(el);
+    }).catch(function () { /* animation is a bonus; the page works without it */ });
+  }
 
+  var animEls = $$('[data-lottie]');
+  if (animEls.length && 'IntersectionObserver' in window) {
+    var lazy = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        obs.unobserve(en.target);
+        mountAnimation(en.target);
+      });
+    }, { rootMargin: '300px 0px' });
+    animEls.forEach(function (el) { lazy.observe(el); });
+  }
 
-  // --- 6. MINDFUL SANDBOX / THOUGHT PROCESSOR ---
-  const moodChips = document.querySelectorAll('.mood-chip');
-  const sandboxInput = document.getElementById('sandboxInput');
-  const sandboxResult = document.getElementById('sandboxResult');
-
-  const moodReflections = {
-    calm: 'Peace is a practice. Taking this quiet moment reinforces your inner stability.',
-    anxious: 'It is okay to feel anxious. Acknowledge this feeling with tenderness—it is just passing through.',
-    grateful: 'Gratitude rewires the mind toward abundance. Holding onto this warmth strengthens your resilience.',
-    overwhelmed: 'You do not have to carry everything at once. Pick just the next gentle breath.',
-    reflective: 'Looking inward is the greatest catalyst for self-awareness and positive change.'
+  /* ---------- Journal box ---------- */
+  var replies = {
+    calm: 'Peace is a practice. Taking this quiet moment keeps you steady.',
+    anxious: 'It is okay to feel anxious. Be kind to yourself. This feeling will pass.',
+    grateful: 'Gratitude turns your attention to what is good. Hold on to this warmth.',
+    overwhelmed: 'You do not have to carry everything at once. Take just the next slow breath.',
+    reflective: 'Looking inward is how change begins. Take your time.'
   };
-
-  moodChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      moodChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const mood = chip.dataset.mood;
-      if (sandboxResult && moodReflections[mood]) {
-        sandboxResult.style.display = 'block';
-        sandboxResult.innerHTML = `<strong>Gentle Reflection:</strong> ${moodReflections[mood]}`;
-      }
+  var reply = document.getElementById('reply');
+  function say(label, text) {
+    if (!reply) return;
+    reply.textContent = '';
+    var b = document.createElement('strong');
+    b.textContent = label + ' ';
+    reply.appendChild(b);
+    reply.appendChild(document.createTextNode(text));
+  }
+  var moodChips = $$('[data-mood]');
+  moodChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      moodChips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+      say('A gentle thought:', replies[chip.dataset.mood] || '');
     });
   });
-
-  if (sandboxInput && sandboxResult) {
-    sandboxInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        const text = sandboxInput.value.trim();
-        if (text.length > 0) {
-          sandboxResult.style.display = 'block';
-          sandboxResult.innerHTML = `<strong>Thought Honored:</strong> "<em>${text}</em>" — Journaling externalizes what we carry inside. Freeing your thoughts brings immediate clarity.`;
-        }
-      }
-    });
-  }
-
-
-  // --- 7. APP SCREENS TOUR / TABS ---
-  const screenTabButtons = document.querySelectorAll('.screen-tab-button');
-  const showcasePanels = document.querySelectorAll('.showcase-screen-panel');
-
-  screenTabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetScreen = btn.dataset.screen;
-      
-      screenTabButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      showcasePanels.forEach(panel => {
-        panel.classList.remove('active');
-        if (panel.id === `screen-${targetScreen}`) {
-          panel.classList.add('active');
-        }
-      });
-    });
-  });
-
-
-  // --- 8. QR CODE MODAL LOGIC ---
-  const qrModal = document.getElementById('qrModal');
-  const qrOpenBtns = document.querySelectorAll('.open-qr-modal-btn');
-  const qrCloseBtn = document.getElementById('closeQrModal');
-  const qrTabButtons = document.querySelectorAll('.qr-tab');
-  const qrIosContent = document.getElementById('qrContentIos');
-  const qrAndroidContent = document.getElementById('qrContentAndroid');
-
-  function openQrModal(defaultTab = 'ios') {
-    if (!qrModal) return;
-    qrModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    switchQrTab(defaultTab);
-  }
-
-  function closeQrModal() {
-    if (!qrModal) return;
-    qrModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function switchQrTab(type) {
-    qrTabButtons.forEach(b => b.classList.remove('active'));
-    const activeBtn = document.querySelector(`.qr-tab[data-tab="${type}"]`);
-    if (activeBtn) activeBtn.classList.add('active');
-
-    if (type === 'ios') {
-      if (qrIosContent) qrIosContent.style.display = 'flex';
-      if (qrAndroidContent) qrAndroidContent.style.display = 'none';
-    } else {
-      if (qrIosContent) qrIosContent.style.display = 'none';
-      if (qrAndroidContent) qrAndroidContent.style.display = 'flex';
-    }
-  }
-
-  qrOpenBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  var thought = document.getElementById('thought');
+  if (thought) {
+    thought.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' || e.shiftKey) return;
       e.preventDefault();
-      const tab = btn.dataset.qrType || 'ios';
-      openQrModal(tab);
-    });
-  });
-
-  if (qrCloseBtn) qrCloseBtn.addEventListener('click', closeQrModal);
-  if (qrModal) {
-    qrModal.addEventListener('click', (e) => {
-      if (e.target === qrModal) closeQrModal();
+      var v = thought.value.trim();
+      if (v) say('Well done for writing that down.', 'Putting a thought into words makes it lighter to carry.');
     });
   }
 
-  qrTabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      switchQrTab(btn.dataset.tab);
+  /* ---------- Prompts ---------- */
+  var prompts = [
+    ['anxiety', 'Calm', 'What is one worry on your mind right now, and what tells you it will be okay?'],
+    ['anxiety', 'Calm', 'Name three things you can control today, and one you can let go of.'],
+    ['anxiety', 'Calm', 'If a close friend felt this way, what kind words would you say to them?'],
+    ['anxiety', 'Calm', 'Take a slow breath. How does your body feel right now? Describe it without judging.'],
+    ['gratitude', 'Gratitude', 'What small moment made you smile today, even for a second?'],
+    ['gratitude', 'Gratitude', 'Who are you thankful for, and why?'],
+    ['gratitude', 'Gratitude', 'What everyday comfort do you often overlook that you appreciate today?'],
+    ['gratitude', 'Gratitude', 'What hard time did you get through that made you stronger?'],
+    ['reflection', 'Reflection', 'Which feelings have kept coming back this week, and what might they be telling you?'],
+    ['reflection', 'Reflection', 'How have your daily habits helped or hurt your peace of mind lately?'],
+    ['reflection', 'Reflection', 'Where in your life are you being too hard on yourself?'],
+    ['reflection', 'Reflection', 'What boundary do you need to set to protect your energy?'],
+    ['growth', 'Growth', 'What is one small step you can take tomorrow to feel more at peace?'],
+    ['growth', 'Growth', 'Which belief about yourself would you like to gently let go of?'],
+    ['growth', 'Growth', 'What does a balanced life look like for you right now?'],
+    ['evening', 'Evening', 'What can you let go of before sleep so tomorrow starts fresh?'],
+    ['evening', 'Evening', 'Celebrate one win from today, however small.'],
+    ['evening', 'Evening', 'What did your body and mind need today? Did you make room for it?']
+  ];
+  var cat = 'all';
+  var lastIdx = -1;
+  var tagEl = document.getElementById('promptTag');
+  var textEl = document.getElementById('promptText');
+  var catChips = $$('[data-cat]');
+
+  function showPrompt() {
+    if (!tagEl || !textEl) return;
+    var pool = prompts.filter(function (p) { return cat === 'all' || p[0] === cat; });
+    if (!pool.length) return;
+    var i;
+    do { i = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && pool[i] === prompts[lastIdx]);
+    lastIdx = prompts.indexOf(pool[i]);
+    textEl.style.opacity = '0';
+    setTimeout(function () {
+      tagEl.textContent = pool[i][1];
+      textEl.textContent = '“' + pool[i][2] + '”';
+      textEl.style.opacity = '1';
+    }, reduceMotion ? 0 : 120);
+  }
+  catChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      catChips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+      cat = chip.dataset.cat;
+      showPrompt();
     });
   });
+  var shuffle = document.getElementById('shuffle');
+  if (shuffle) shuffle.addEventListener('click', showPrompt);
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && qrModal && qrModal.classList.contains('open')) {
-      closeQrModal();
-    }
-  });
+  var copyBtn = document.getElementById('copyPrompt');
+  if (copyBtn && textEl) {
+    copyBtn.addEventListener('click', function () {
+      var text = textEl.textContent.replace(/^“|”$/g, '');
+      var done = function (msg) {
+        copyBtn.textContent = msg;
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done('Copied'); }, function () { done('Could not copy'); });
+      } else { done('Could not copy'); }
+    });
+  }
 
+  /* ---------- Phone scan dialog ---------- */
+  var modal = document.getElementById('qrModal');
+  if (modal) {
+    var lastFocus = null;
+    var closeBtn = document.getElementById('qrClose');
+    var tabs = $$('[data-qr-tab]', modal);
+    var panes = { ios: document.getElementById('qrIos'), android: document.getElementById('qrAndroid') };
+
+    var pick = function (type) {
+      tabs.forEach(function (t) { t.setAttribute('aria-pressed', String(t.dataset.qrTab === type)); });
+      panes.ios.hidden = type !== 'ios';
+      panes.android.hidden = type !== 'android';
+    };
+    var open = function (type) {
+      lastFocus = document.activeElement;
+      // Load the code images only when the dialog is first opened
+      $$('img[data-src]', modal).forEach(function (im) { im.src = im.dataset.src; delete im.dataset.src; });
+      pick(type || 'ios');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    };
+    var close = function () {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+
+    $$('.open-qr').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); open(b.dataset.qr); });
+    });
+    tabs.forEach(function (t) { t.addEventListener('click', function () { pick(t.dataset.qrTab); }); });
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Tab') {                         // keep keyboard focus inside the dialog
+        var f = $$('button, a[href]', modal).filter(function (n) { return !n.closest('[hidden]'); });
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
 })();

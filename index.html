@@ -1,773 +1,365 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KXBGJLKK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  
-  <!-- Primary Meta Tags -->
-  <title>HealMent - Journal your way to better mental health</title>
-  <meta name="title" content="HealMent - Journal your way to better mental health">
-  <meta name="description" content="Healment app helps you Journal your thoughts and free your mind. Over 200 guided prompts, mood tracking, and insightful dashboards.">
-  <meta name="theme-color" content="#0a0f1d">
-  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Open Graph / Facebook -->
+  <title>HealMent: Journaling App for Better Mental Health</title>
+  <meta name="description" content="HealMent is a free journaling app for iPhone and Android. 200+ guided prompts, mood tracking and insights to help you process emotions and feel calmer.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://healment.cend.in/">
+  <meta name="author" content="Srikanth Nandiraju">
+  <meta name="theme-color" content="#0e1020" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fbfaff" media="(prefers-color-scheme: light)">
+  <meta name="apple-itunes-app" content="app-id=1658941963">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://srikanthnandiraju.github.io/healment/">
-  <meta property="og:title" content="HealMent - Journal your way to better mental health">
-  <meta property="og:description" content="Healment app helps you Journal your thoughts and free your mind. Companion for better mental health with guided prompts, insights, and themes.">
-  <meta property="og:image" content="assets/images/screen-hero.png">
+  <meta property="og:site_name" content="HealMent">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://healment.cend.in/">
+  <meta property="og:title" content="HealMent: Journaling App for Better Mental Health">
+  <meta property="og:description" content="Journal your thoughts, follow guided prompts and see your mood patterns. Free for iPhone and Android.">
+  <meta property="og:image" content="https://healment.cend.in/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HealMent journaling app shown on an iPhone">
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://srikanthnandiraju.github.io/healment/">
-  <meta property="twitter:title" content="HealMent - Journal your way to better mental health">
-  <meta property="twitter:description" content="Healment app helps you Journal your thoughts and free your mind. Companion for better mental health.">
-  <meta property="twitter:image" content="assets/images/screen-hero.png">
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HealMent: Journaling App for Better Mental Health">
+  <meta name="twitter:description" content="Journal your thoughts, follow guided prompts and see your mood patterns. Free for iPhone and Android.">
+  <meta name="twitter:image" content="https://healment.cend.in/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="HealMent journaling app shown on an iPhone">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-healment.svg">
-  <link rel="apple-touch-icon" href="assets/images/logo-healment.svg">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 
-  <!-- High-Performance Stylesheet -->
+  <!-- Pick the saved colour theme before the page paints (no flash) -->
+  <script>
+    try {
+      var t = localStorage.getItem('healment_theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+
+  <link rel="preload" as="image" href="assets/images/screen-hero.webp" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
-  
-  <!-- Preload Critical Above-The-Fold Assets -->
-  <link rel="preload" as="image" href="assets/images/screen-hero.webp" type="image/webp">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://healment.cend.in/#website",
+        "url": "https://healment.cend.in/",
+        "name": "HealMent",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://healment.cend.in/#creator" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://healment.cend.in/#webpage",
+        "url": "https://healment.cend.in/",
+        "name": "HealMent: Journaling App for Better Mental Health",
+        "description": "HealMent is a free journaling app for iPhone and Android with 200+ guided prompts, mood tracking and insights.",
+        "isPartOf": { "@id": "https://healment.cend.in/#website" },
+        "about": { "@id": "https://healment.cend.in/#app" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://healment.cend.in/assets/images/og-image.png", "width": 1200, "height": 630 },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://healment.cend.in/#app",
+        "name": "HealMent",
+        "description": "Journaling app with over 200 guided prompts, mood tracking and insight dashboards to support your mental health.",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "url": "https://healment.cend.in/",
+        "image": "https://healment.cend.in/assets/images/og-image.png",
+        "downloadUrl": [
+          "https://apps.apple.com/us/app/healment/id1658941963",
+          "https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment"
+        ],
+        "installUrl": "https://apps.apple.com/us/app/healment/id1658941963",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://healment.cend.in/#creator" },
+        "featureList": [
+          "200+ guided journaling prompts",
+          "Create your own prompts",
+          "Mood tracking and insight dashboard",
+          "Mental health tips",
+          "Bookmarks for prompts, articles and entries",
+          "Dark and light themes"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://healment.cend.in/#creator",
+        "name": "Srikanth Nandiraju",
+        "url": "https://srikanth.nandiraju.com/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Ambient Decorative Background Lights -->
-  <div class="bg-ambient-layer" aria-hidden="true">
-    <div class="ambient-blob ambient-blob-1"></div>
-    <div class="ambient-blob ambient-blob-2"></div>
-    <div class="ambient-blob ambient-blob-3"></div>
-  </div>
-
-  <!-- Header / Navigation Bar -->
   <header class="site-header">
-    <div class="container nav-container">
-      <a href="#hero" class="brand-wrap" aria-label="HealMent Home">
-        <img src="assets/images/logo-healment.svg" alt="HealMent Logo" class="brand-logo-img" width="38" height="38">
-        <span>Heal<strong class="gradient-text">Ment</strong></span>
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="HealMent home">
+        <img src="assets/images/logo-healment.svg" alt="" width="36" height="36">
+        <span>HealMent</span>
       </a>
 
-      <!-- Desktop & Mobile Navigation Links -->
-      <nav aria-label="Main Navigation">
-        <ul class="nav-links">
-          <li><a href="#hero" class="nav-link">Overview</a></li>
-          <li><a href="#journaling" class="nav-link">Journaling</a></li>
-          <li><a href="#prompts" class="nav-link">Prompts</a></li>
-          <li><a href="#patterns" class="nav-link">Insights</a></li>
-          <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#app-screens" class="nav-link">App Tour</a></li>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#journaling">Journaling</a></li>
+          <li><a href="#prompts">Prompts</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#screens">The app</a></li>
         </ul>
       </nav>
 
-      <!-- Actions & Theme Toggle -->
       <div class="nav-actions">
-        <!-- Theme Toggle Button -->
-        <button class="btn-icon-theme theme-toggle-btn" aria-label="Toggle Color Theme" title="Toggle Light / Dark Theme">
-          <!-- Sun Icon (for dark mode) -->
-          <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-          <!-- Moon Icon (for light mode) -->
-          <svg class="theme-icon icon-moon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light colours">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
-
-        <!-- QR Code Scanner Quick Button -->
-        <button class="btn-qr-scan open-qr-modal-btn" data-qr-type="ios" title="Scan with Phone Camera">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-          <span>Scan App</span>
-        </button>
-
-        <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <span class="hamburger-icon" style="font-size:1.5rem; line-height:1;">☰</span>
+        <a class="btn btn-primary btn-small" href="#download">Get the app</a>
+        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- =======================================================================
-         HERO SECTION
-         ======================================================================= -->
-    <section class="hero-section" id="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <!-- Left Column: Copy & Actions -->
-          <div class="hero-content fade-in-up">
-            <div class="pill-badge">
-              <span class="pill-dot"></span>
-              <span>Personal Mental Wellness Companion</span>
-            </div>
-            
-            <h1 class="hero-title">
-              Journal your way<br>
-              to <span class="gradient-text">better mental health</span>
-            </h1>
+  <main id="main">
 
-            <p class="hero-desc">
-              Healment app helps you Journal your thoughts and free your mind. This app is your companion for better mental health.
-            </p>
-
-            <div class="hero-actions">
-              <div class="store-badges-group">
-                <!-- Apple App Store Badge -->
-                <a href="https://apps.apple.com/us/app/healment/id1658941963?platform=iphone" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="store-badge-card"
-                   aria-label="Download Healment on the Apple App Store">
-                  <svg class="store-badge-icon" viewBox="0 0 170 170" fill="currentColor">
-                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.31-7.85-11.92-13.32-25.07-16.42-39.46-3.1-14.38-3.1-27.14 0-38.27 3.69-13.25 10.15-23.77 19.38-31.57 9.23-7.8 19.64-11.83 31.23-12.1 4.58 0 9.87 1.16 15.86 3.5 5.99 2.33 9.77 3.5 11.33 3.5 1.79 0 5.86-1.22 12.21-3.67 6.35-2.45 11.75-3.56 16.2-3.32 12.06.66 21.99 5.09 29.8 13.27-10.71 6.53-15.96 15.42-15.74 26.68.22 8.79 3.57 16.14 10.05 22.05 6.47 5.92 14.17 9.38 23.09 10.39-2.45 7.6-5.59 15.42-9.42 23.47zM119.22 33.15c0-6.73 2.45-13.04 7.35-18.93 4.9-5.89 10.97-9.59 18.2-11.11.22 1.33.33 2.45.33 3.35 0 6.62-2.56 13.1-7.68 19.45-5.12 6.35-11.27 10.05-18.45 11.11-.11-1.33-.25-2.62-.25-3.87z"/>
-                  </svg>
-                  <div class="store-badge-text">
-                    <span class="store-badge-sub">Download on the</span>
-                    <span class="store-badge-title">App Store</span>
-                  </div>
-                </a>
-
-                <!-- Google Play Store Badge -->
-                <a href="https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="store-badge-card"
-                   aria-label="Get Healment on Google Play">
-                  <svg class="store-badge-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.609 1.814L13.793 12 3.61 22.186c-.368-.344-.61-.83-.61-1.393V3.207c0-.563.242-1.049.61-1.393zm11.238 11.24L4.85 23.051c.316.096.657.149 1.01.149.52 0 1.017-.128 1.464-.356l9.53-5.498-2.007-4.292zm0-2.108l2.007-4.292L7.324 1.156C6.877.928 6.38.8 5.86.8c-.353 0-.694.053-1.01.149l9.997 9.997zm1.096 1.054l2.585 1.492c1.23.71 1.23 1.867 0 2.577l-2.585 1.492-2.164-2.78 2.164-2.781z"/>
-                  </svg>
-                  <div class="store-badge-text">
-                    <span class="store-badge-sub">Get it on</span>
-                    <span class="store-badge-title">Google Play</span>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Quick Perks / Trust Points -->
-              <div class="hero-perks">
-                <div class="perk-item">
-                  <svg class="perk-icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>200+ Guided Prompts</span>
-                </div>
-                <div class="perk-item">
-                  <svg class="perk-icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>100% Private & On-Device</span>
-                </div>
-                <div class="perk-item">
-                  <svg class="perk-icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Dark & Light Themes</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Interactive Phone Mockup -->
-          <div class="hero-mockup-wrap fade-in-up">
-            <div class="hero-mockup-glow"></div>
-            
-            <!-- Floating Notification Card 1 -->
-            <div class="floating-glass-card floating-card-1">
-              <div class="floating-card-icon">🌿</div>
-              <div>
-                <div>Daily Reflection</div>
-                <div style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">Feeling calm & grounded</div>
-              </div>
-            </div>
-
-            <!-- Floating Notification Card 2 -->
-            <div class="floating-glass-card floating-card-2">
-              <div class="floating-card-icon">✨</div>
-              <div>
-                <div>Insight Discovered</div>
-                <div style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">Evening journaling streak: 7 days</div>
-              </div>
-            </div>
-
-            <!-- Phone Frame with Screen -->
-            <div class="phone-mockup-container">
-              <picture>
-                <source srcset="assets/images/screen-hero.webp" type="image/webp">
-                <img src="assets/images/screen-hero.png" 
-                     alt="Healment iPhone App Interface" 
-                     class="phone-img" 
-                     width="795" 
-                     height="1598" 
-                     loading="eager" 
-                     fetchpriority="high">
-              </picture>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- =======================================================================
-         SECTION 1: JOURNAL YOUR THOUGHTS (DEEP DIVE)
-         ======================================================================= -->
-    <section class="feature-split-section" id="journaling">
-      <div class="container">
-        <div class="feature-split-grid">
-          <!-- Text and Interactive Thought Sandbox -->
-          <div class="feature-content-col fade-in-up">
-            <span class="section-eyebrow">Mindful Expression</span>
-            <h2 class="section-title">Journal your thoughts in healment app</h2>
-            <p class="section-desc">
-              Journaling about your feelings can be a helpful way to process and understand your emotions. It can also provide a space for self-reflection and personal growth. When you write about your feelings, you are able to express yourself in a way that may not be possible through spoken language. This can be especially beneficial if you are experiencing difficult emotions, such as sadness, anger, or anxiety.
-            </p>
-
-            <ul class="feature-checklist">
-              <li class="feature-check-item">
-                <div class="check-icon-circle">✓</div>
-                <div><strong>A Safe Space for Raw Emotions:</strong> Express complex thoughts without fear of judgment.</div>
-              </li>
-              <li class="feature-check-item">
-                <div class="check-icon-circle">✓</div>
-                <div><strong>Emotional Processing:</strong> Clarify emotional knots and relieve feelings of stress and anxiety.</div>
-              </li>
-              <li class="feature-check-item">
-                <div class="check-icon-circle">✓</div>
-                <div><strong>Clutter-Free Mind:</strong> Unburden your cognitive load so you can focus on what matters.</div>
-              </li>
-            </ul>
-
-            <!-- Interactive Mindful Sandbox Widget -->
-            <div class="mindful-sandbox-card">
-              <div class="sandbox-header">
-                <span class="sandbox-title">
-                  <span>🍃</span> Mindful Sandbox: How are you feeling right now?
-                </span>
-              </div>
-              <div class="mood-chips-row">
-                <button type="button" class="mood-chip active" data-mood="calm">Calm</button>
-                <button type="button" class="mood-chip" data-mood="anxious">Anxious</button>
-                <button type="button" class="mood-chip" data-mood="grateful">Grateful</button>
-                <button type="button" class="mood-chip" data-mood="overwhelmed">Overwhelmed</button>
-                <button type="button" class="mood-chip" data-mood="reflective">Reflective</button>
-              </div>
-              <textarea id="sandboxInput" 
-                        class="sandbox-input-box" 
-                        placeholder="Write a fleeting thought or feeling here (Press Enter to reflect)..." 
-                        aria-label="Mindful reflection note"></textarea>
-              <div id="sandboxResult" class="sandbox-result">
-                <strong>Gentle Reflection:</strong> Peace is a practice. Taking this quiet moment reinforces your inner stability.
-              </div>
-            </div>
-          </div>
-
-          <!-- Phone Mockup for Journaling Screen -->
-          <div class="feature-mockup-col fade-in-up" style="display:flex; justify-content:center;">
-            <div class="phone-mockup-container">
-              <picture>
-                <source srcset="assets/images/screen-journal.webp" type="image/webp">
-                <img src="assets/images/screen-journal.png" 
-                     alt="Healment Journal Thoughts Screen" 
-                     class="phone-img" 
-                     width="500" 
-                     height="991" 
-                     loading="lazy" 
-                     decoding="async">
-              </picture>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- =======================================================================
-         SECTION 2: USE GUIDED PROMPTS (INTERACTIVE PROMPT EXPLORER)
-         ======================================================================= -->
-    <section class="feature-split-section" id="prompts">
-      <div class="container">
-        <div class="feature-split-grid reverse">
-          <!-- Text and Interactive Guided Prompts Generator -->
-          <div class="feature-content-col fade-in-up">
-            <span class="section-eyebrow">Inspiration & Structure</span>
-            <h2 class="section-title">Use guided prompts</h2>
-            <p class="section-desc">
-              Using guided prompts for journaling about your mental health can be a helpful way to structure your entries and focus your thoughts. These prompts can provide specific topics to write about, which can help you explore different aspects of your mental health and gain insights into your emotions and experiences. <strong>Healment app provides over 200 guided prompts and you can also create your own prompts.</strong>
-            </p>
-
-            <!-- Interactive Prompt Explorer Component -->
-            <div class="prompt-explorer-container">
-              <div class="prompt-category-tabs">
-                <button type="button" class="prompt-tab-btn active" data-category="all">All Topics</button>
-                <button type="button" class="prompt-tab-btn" data-category="anxiety">Calming Anxiety</button>
-                <button type="button" class="prompt-tab-btn" data-category="gratitude">Gratitude</button>
-                <button type="button" class="prompt-tab-btn" data-category="reflection">Self-Reflection</button>
-                <button type="button" class="prompt-tab-btn" data-category="growth">Growth & Goals</button>
-                <button type="button" class="prompt-tab-btn" data-category="evening">Evening</button>
-              </div>
-
-              <!-- Interactive Prompt Card Box -->
-              <div class="prompt-card-display">
-                <span class="prompt-category-tag" id="promptCategoryTag">Calming Anxiety</span>
-                <p class="prompt-text-quote" id="promptTextQuote">
-                  “What is one worry currently on your mind, and what evidence is there that everything will be okay?”
-                </p>
-              </div>
-
-              <div class="prompt-actions-row">
-                <button type="button" class="btn btn-primary" id="shufflePromptBtn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="16 3 21 3 21 8"></polyline>
-                    <line x1="4" y1="20" x2="21" y2="3"></line>
-                    <polyline points="21 16 21 21 16 21"></polyline>
-                    <line x1="15" y1="15" x2="21" y2="21"></line>
-                    <line x1="4" y1="4" x2="9" y2="9"></line>
-                  </svg>
-                  <span>Shuffle New Prompt</span>
-                </button>
-
-                <button type="button" class="btn btn-secondary" id="copyPromptBtn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  <span>Copy Prompt</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phone Mockup for Prompts Screen -->
-          <div class="feature-mockup-col fade-in-up" style="display:flex; justify-content:center;">
-            <div class="phone-mockup-container">
-              <picture>
-                <source srcset="assets/images/screen-prompts.webp" type="image/webp">
-                <img src="assets/images/screen-prompts.png" 
-                     alt="Healment Guided Prompts Interface" 
-                     class="phone-img" 
-                     width="500" 
-                     height="1014" 
-                     loading="lazy" 
-                     decoding="async">
-              </picture>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- =======================================================================
-         SECTION 3: INTROSPECT INTO THOUGHTS & PATTERNS
-         ======================================================================= -->
-    <section class="feature-split-section" id="patterns">
-      <div class="container">
-        <div class="feature-split-grid">
-          <!-- Text and Analytics Highlights -->
-          <div class="feature-content-col fade-in-up">
-            <span class="section-eyebrow">Self-Discovery & Analysis</span>
-            <h2 class="section-title">Introspect in to your thoughts & patterns</h2>
-            <p class="section-desc">
-              Writing in a journal can also help you gain insights into yourself and your experiences. By reviewing your entries, you may notice patterns in your thoughts and behaviors, which can provide valuable insights into your emotions and motivations. This can help you better understand yourself and make positive changes in your life.
-            </p>
-
-            <ul class="feature-checklist">
-              <li class="feature-check-item">
-                <div class="check-icon-circle">✓</div>
-                <div><strong>Identify Emotional Triggers:</strong> Understand what circumstances lift your mood or trigger anxiety.</div>
-              </li>
-              <li class="feature-check-item">
-                <div class="check-icon-circle">✓</div>
-                <div><strong>Visualize Your Mind:</strong> Clear graphs depicting mood distribution, journaling frequency, and growth milestones.</div>
-              </li>
-              <li class="feature-check-item">
-                <div class="check-icon-circle">✓</div>
-                <div><strong>Empower Positive Habit Loops:</strong> Build actionable self-awareness to make enduring lifestyle improvements.</div>
-              </li>
-            </ul>
-
-            <div style="margin-top: 1.5rem;">
-              <a href="#features" class="btn btn-secondary">
-                <span>Explore Dashboard Features</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1>Journal your way to better mental health</h1>
+          <p>Write down what is on your mind, follow gentle prompts and see how your mood changes over time.</p>
+          <div class="hero-actions">
+            <div class="store-row">
+              <a class="store-badge" href="https://apps.apple.com/us/app/healment/id1658941963?platform=iphone" target="_blank" rel="noopener noreferrer" aria-label="Download HealMent on the App Store">
+                <svg viewBox="0 0 170 170" aria-hidden="true"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.31-7.85-11.92-13.32-25.07-16.42-39.46-3.1-14.38-3.1-27.14 0-38.27 3.69-13.25 10.15-23.77 19.38-31.57 9.23-7.8 19.64-11.83 31.23-12.1 4.58 0 9.87 1.16 15.86 3.5 5.99 2.33 9.77 3.5 11.33 3.5 1.79 0 5.86-1.22 12.21-3.67 6.35-2.45 11.75-3.56 16.2-3.32 12.06.66 21.99 5.09 29.8 13.27-10.71 6.53-15.96 15.42-15.74 26.68.22 8.79 3.57 16.14 10.05 22.05 6.47 5.92 14.17 9.38 23.09 10.39-2.45 7.6-5.59 15.42-9.42 23.47zM119.22 33.15c0-6.73 2.45-13.04 7.35-18.93 4.9-5.89 10.97-9.59 18.2-11.11.22 1.33.33 2.45.33 3.35 0 6.62-2.56 13.1-7.68 19.45-5.12 6.35-11.27 10.05-18.45 11.11-.11-1.33-.25-2.62-.25-3.87z"/></svg>
+                <span><small>Download on the</small><strong>App Store</strong></span>
+              </a>
+              <a class="store-badge" href="https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment" target="_blank" rel="noopener noreferrer" aria-label="Get HealMent on Google Play">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.609 1.814L13.793 12 3.61 22.186c-.368-.344-.61-.83-.61-1.393V3.207c0-.563.242-1.049.61-1.393zm11.238 11.24L4.85 23.051c.316.096.657.149 1.01.149.52 0 1.017-.128 1.464-.356l9.53-5.498-2.007-4.292zm0-2.108l2.007-4.292L7.324 1.156C6.877.928 6.38.8 5.86.8c-.353 0-.694.053-1.01.149l9.997 9.997zm1.096 1.054l2.585 1.492c1.23.71 1.23 1.867 0 2.577l-2.585 1.492-2.164-2.78 2.164-2.781z"/></svg>
+                <span><small>Get it on</small><strong>Google Play</strong></span>
               </a>
             </div>
+            <button class="text-link open-qr" type="button" data-qr="ios">On a computer? Scan a code with your phone</button>
           </div>
+        </div>
 
-          <!-- Phone Mockup for Insights Screen -->
-          <div class="feature-mockup-col fade-in-up" style="display:flex; justify-content:center;">
-            <div class="phone-mockup-container">
-              <picture>
-                <source srcset="assets/images/screen-insights.webp" type="image/webp">
-                <img src="assets/images/screen-insights.png" 
-                     alt="Healment Introspect and Mood Patterns Interface" 
-                     class="phone-img" 
-                     width="500" 
-                     height="1027" 
-                     loading="lazy" 
-                     decoding="async">
-              </picture>
-            </div>
+        <div class="hero-visual">
+          <div class="phone">
+            <img src="assets/images/screen-hero.webp" alt="HealMent home screen on an iPhone" width="640" height="1286" fetchpriority="high" decoding="async">
           </div>
         </div>
       </div>
     </section>
 
 
-    <!-- =======================================================================
-         SECTION 4: CORE FEATURES BENTO GRID
-         ======================================================================= -->
-    <section class="features-section" id="features">
-      <div class="container">
-        <div class="section-header-center fade-in-up">
-          <span class="section-eyebrow">Everything You Need</span>
-          <h2>Features</h2>
-          <p>
-            Designed with thoughtful minimalism and evidence-based mental wellness practices to help you feel stronger, calmer, and more hopeful every day.
-          </p>
+    <!-- ===================== JOURNALING ===================== -->
+    <section id="journaling" class="defer">
+      <div class="wrap split">
+        <div class="split-copy">
+          <h2>Get your thoughts out of your head</h2>
+          <p>Writing about your feelings helps you understand them. It gives you a quiet place to think, especially when you feel sad, angry or anxious.</p>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>A safe space.</strong> Say what you feel without being judged.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Less stress.</strong> Sort out tangled emotions one line at a time.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>A clearer mind.</strong> Put it on the page so you can focus on what matters.</span></li>
+          </ul>
+
+          <div class="journal-box">
+            <h3 id="moodQ">How are you feeling right now?</h3>
+            <div class="chips" role="group" aria-labelledby="moodQ">
+              <button type="button" class="chip" data-mood="calm" aria-pressed="true">Calm</button>
+              <button type="button" class="chip" data-mood="anxious" aria-pressed="false">Anxious</button>
+              <button type="button" class="chip" data-mood="grateful" aria-pressed="false">Grateful</button>
+              <button type="button" class="chip" data-mood="overwhelmed" aria-pressed="false">Overwhelmed</button>
+              <button type="button" class="chip" data-mood="reflective" aria-pressed="false">Reflective</button>
+            </div>
+            <label class="field-label" for="thought">Write one thought</label>
+            <textarea id="thought" class="field" placeholder="Type a thought and press Enter"></textarea>
+            <p class="reply" id="reply" aria-live="polite"><strong>A gentle thought:</strong> Peace is a practice. Taking this quiet moment keeps you steady.</p>
+          </div>
         </div>
 
-        <div class="bento-grid">
-          <!-- Bento Card 1: Mental Health Tips -->
-          <div class="bento-card fade-in-up">
-            <div class="bento-icon-wrapper">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a10 10 0 0 1 10 10c0 5.25-3.5 8.5-8.5 9.5v.5a2 2 0 0 1-4 0v-.5C4.5 20.5 1 17.25 1 12A10 10 0 0 1 12 2z"></path>
-                <path d="M12 6v6l4 2"></path>
-              </svg>
-            </div>
-            <h4 class="bento-title">Mental health tips</h4>
-            <p class="bento-desc">
-              Provides general mental health tips and industry trends. These proven tools can help you feel stronger and more hopeful. Check out each tips section for specific, easy-to-follow tips.
-            </p>
-          </div>
-
-          <!-- Bento Card 2: Prompts -->
-          <div class="bento-card fade-in-up">
-            <div class="bento-icon-wrapper">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-            </div>
-            <h4 class="bento-title">Prompts</h4>
-            <p class="bento-desc">
-              Using guided prompts for mental health journaling can help you focus your writing and explore different aspects of your mental health. It can also provide a helpful structure for your entries, making it easier to write regularly and consistently.
-            </p>
-          </div>
-
-          <!-- Bento Card 3: Easy Journaling -->
-          <div class="bento-card fade-in-up">
-            <div class="bento-icon-wrapper">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20h9"></path>
-                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-              </svg>
-            </div>
-            <h4 class="bento-title">Easy journaling</h4>
-            <p class="bento-desc">
-              Simple interface for journaling for your mental well-being. Overall, journaling about your feelings can be a beneficial tool for managing your emotions, gaining self-awareness, and promoting personal growth.
-            </p>
-          </div>
-
-          <!-- Bento Card 4: Insightful Dashboard -->
-          <div class="bento-card fade-in-up">
-            <div class="bento-icon-wrapper">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-            </div>
-            <h4 class="bento-title">Insightful dashboard</h4>
-            <p class="bento-desc">
-              Dashboard allows to track and analyze mental health data. It includes data such as journaling trends, mood tracking, and data visualization, which can help users gain insights into their mental health and well-being.
-            </p>
-          </div>
-
-          <!-- Bento Card 5: App Themes (With Live Interactive Toggle) -->
-          <div class="bento-card bento-card-interactive fade-in-up">
-            <div class="bento-icon-wrapper">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2"></path>
-                <path d="M12 20v2"></path>
-                <path d="M4.93 4.93l1.41 1.41"></path>
-                <path d="M17.66 17.66l1.41 1.41"></path>
-                <path d="M2 12h2"></path>
-                <path d="M20 12h2"></path>
-                <path d="M6.34 17.66l-1.41 1.41"></path>
-                <path d="M19.07 4.93l-1.41 1.41"></path>
-              </svg>
-            </div>
-            <h4 class="bento-title">App themes</h4>
-            <p class="bento-desc">
-              Supports dark and light themes that users can configure. Seamlessly matches your personal aesthetic and helps reduce eye fatigue when journaling at night.
-            </p>
-            
-            <!-- Mini Theme Preview Toggle Inside Card -->
-            <div class="theme-preview-box">
-              <span id="current-theme-name" style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">Dark Theme Active</span>
-              <button class="btn btn-secondary theme-toggle-btn" style="padding:0.4rem 0.8rem; font-size:0.8rem;" aria-label="Toggle App Theme">
-                <span class="theme-label-text">Switch Mode</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Bento Card 6: Bookmarks -->
-          <div class="bento-card fade-in-up">
-            <div class="bento-icon-wrapper">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </div>
-            <h4 class="bento-title">Bookmarks</h4>
-            <p class="bento-desc">
-              Bookmark your favourite prompts, mental health articles and journal entries. Keep what inspires and heals you easily accessible whenever you need a boost.
-            </p>
-          </div>
+        <div class="art" role="img" aria-label="Animated illustration of a person writing in a journal">
+          <div class="lottie" data-lottie="assets/lottie/journal.json"></div>
         </div>
       </div>
     </section>
 
 
-    <!-- =======================================================================
-         SECTION 5: INTERACTIVE APP SCREEN SHOWCASE
-         ======================================================================= -->
-    <section class="screens-showcase-section" id="app-screens">
-      <div class="container">
-        <div class="section-header-center fade-in-up">
-          <span class="section-eyebrow">Explore the Interface</span>
-          <h2>A Mindful Experience on Every Screen</h2>
-          <p>
-            Clean typography, comforting aesthetics, and seamless navigation designed to calm your senses from the moment you open the app.
-          </p>
+    <!-- ===================== PROMPTS ===================== -->
+    <section id="prompts" class="defer">
+      <div class="wrap split flip">
+        <div class="split-copy">
+          <h2>Never stare at a blank page</h2>
+          <p>Prompts give your writing a starting point so you can look at different parts of your life. HealMent has over 200 of them, and you can add your own.</p>
+
+          <div class="prompt-box">
+            <div class="chips" role="group" aria-label="Prompt topics">
+              <button type="button" class="chip" data-cat="all" aria-pressed="true">All</button>
+              <button type="button" class="chip" data-cat="anxiety" aria-pressed="false">Calm</button>
+              <button type="button" class="chip" data-cat="gratitude" aria-pressed="false">Gratitude</button>
+              <button type="button" class="chip" data-cat="reflection" aria-pressed="false">Reflection</button>
+              <button type="button" class="chip" data-cat="growth" aria-pressed="false">Growth</button>
+              <button type="button" class="chip" data-cat="evening" aria-pressed="false">Evening</button>
+            </div>
+            <div class="prompt-card" aria-live="polite">
+              <span class="prompt-tag" id="promptTag">Calm</span>
+              <p class="prompt-text" id="promptText">“What is one worry on your mind right now, and what tells you it will be okay?”</p>
+            </div>
+            <div class="prompt-actions">
+              <button type="button" class="btn btn-primary" id="shuffle">New prompt</button>
+              <button type="button" class="btn btn-ghost" id="copyPrompt">Copy</button>
+            </div>
+          </div>
         </div>
 
-        <!-- Screen Navigation Tabs -->
-        <div class="screen-tabs-nav fade-in-up" role="tablist">
-          <button type="button" class="screen-tab-button active" data-screen="1" role="tab" aria-selected="true">
-            <span>01</span> Home & Overview
-          </button>
-          <button type="button" class="screen-tab-button" data-screen="2" role="tab" aria-selected="false">
-            <span>02</span> Free Journaling
-          </button>
-          <button type="button" class="screen-tab-button" data-screen="3" role="tab" aria-selected="false">
-            <span>03</span> Guided Prompts
-          </button>
-          <button type="button" class="screen-tab-button" data-screen="4" role="tab" aria-selected="false">
-            <span>04</span> Insights & Trends
-          </button>
-          <button type="button" class="screen-tab-button" data-screen="5" role="tab" aria-selected="false">
-            <span>05</span> Personalized Setup
-          </button>
-        </div>
-
-        <!-- Showcase Panels -->
-        <div class="showcase-stage">
-          <!-- Screen 1: Home / Hero View -->
-          <div class="showcase-screen-panel active" id="screen-1">
-            <div class="showcase-device">
-              <picture>
-                <source srcset="assets/images/screen-hero.webp" type="image/webp">
-                <img src="assets/images/screen-hero.png" alt="Healment Main Screen" class="phone-img" width="795" height="1598" loading="lazy">
-              </picture>
-            </div>
-            <div class="showcase-info">
-              <span class="showcase-tag">Dashboard & Quick Start</span>
-              <h3>Your Daily Mental Wellness Hub</h3>
-              <p>
-                Get greeted every day with inspiring prompts, gentle reminders to check in with your emotions, and instant access to your daily journal.
-              </p>
-              <div style="margin-top:1.5rem;">
-                <a href="#download" class="btn btn-primary">Get Healment Free</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Screen 2: Journaling -->
-          <div class="showcase-screen-panel" id="screen-2">
-            <div class="showcase-device">
-              <picture>
-                <source srcset="assets/images/screen-journal.webp" type="image/webp">
-                <img src="assets/images/screen-journal.png" alt="Journaling Screen" class="phone-img" width="500" height="991" loading="lazy">
-              </picture>
-            </div>
-            <div class="showcase-info">
-              <span class="showcase-tag">Free & Expressive Writing</span>
-              <h3>Journal your feelings safely</h3>
-              <p>
-                A soothing, distraction-free environment that lets your thoughts flow effortlessly. Express your emotions without worrying about structure or grammar.
-              </p>
-              <div style="margin-top:1.5rem;">
-                <a href="#download" class="btn btn-primary">Start Writing Today</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Screen 3: Guided Prompts -->
-          <div class="showcase-screen-panel" id="screen-3">
-            <div class="showcase-device">
-              <picture>
-                <source srcset="assets/images/screen-prompts.webp" type="image/webp">
-                <img src="assets/images/screen-prompts.png" alt="Prompts Screen" class="phone-img" width="500" height="1014" loading="lazy">
-              </picture>
-            </div>
-            <div class="showcase-info">
-              <span class="showcase-tag">200+ Guided Prompts</span>
-              <h3>Explore deep self-reflection</h3>
-              <p>
-                Never stare at a blank page again. Choose from curated prompts tailored to anxiety relief, gratitude, daily mindfulness, or craft your very own.
-              </p>
-              <div style="margin-top:1.5rem;">
-                <a href="#prompts" class="btn btn-secondary">Try Interactive Prompts</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Screen 4: Insights & Patterns -->
-          <div class="showcase-screen-panel" id="screen-4">
-            <div class="showcase-device">
-              <picture>
-                <source srcset="assets/images/screen-insights.webp" type="image/webp">
-                <img src="assets/images/screen-insights.png" alt="Insights Screen" class="phone-img" width="500" height="1027" loading="lazy">
-              </picture>
-            </div>
-            <div class="showcase-info">
-              <span class="showcase-tag">Data & Introspection</span>
-              <h3>Understand your patterns</h3>
-              <p>
-                Review recurring moods and habits over time. Gain meaningful clarity into what nourishes your spirit and what triggers anxiety.
-              </p>
-              <div style="margin-top:1.5rem;">
-                <a href="#download" class="btn btn-primary">Track Your Patterns</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Screen 5: Settings / Personalization -->
-          <div class="showcase-screen-panel" id="screen-5">
-            <div class="showcase-device">
-              <picture>
-                <source srcset="assets/images/screen-summary.webp" type="image/webp">
-                <img src="assets/images/screen-summary.png" alt="Healment Summary Screen" class="phone-img" width="736" height="1503" loading="lazy">
-              </picture>
-            </div>
-            <div class="showcase-info">
-              <span class="showcase-tag">Tailored For You</span>
-              <h3>Custom themes & bookmarks</h3>
-              <p>
-                Configure comfortable dark and light themes, bookmark favorite passages and tips, and safeguard your journey with on-device privacy.
-              </p>
-              <div style="margin-top:1.5rem;">
-                <a href="#download" class="btn btn-primary">Download on iOS & Android</a>
-              </div>
-            </div>
-          </div>
+        <div class="art" role="img" aria-label="Animated illustration of a person with gentle reminders">
+          <div class="lottie" data-lottie="assets/lottie/prompts.json"></div>
         </div>
       </div>
     </section>
 
 
-    <!-- =======================================================================
-         SECTION 6: FINAL CALL TO ACTION BANNER
-         ======================================================================= -->
-    <section class="cta-banner-section" id="download">
-      <div class="container">
-        <div class="cta-banner-card fade-in-up">
-          <div class="cta-grid">
-            <div class="cta-content">
-              <h2 class="cta-title">
-                Healment: a journaling app<br>
-                <span class="gradient-text">that supports your mental health</span>
-              </h2>
-              <p class="cta-desc">
-                Take the first mindful step towards better emotional clarity, reduced anxiety, and self-understanding. Available for both iOS and Android devices.
-              </p>
+    <!-- ===================== INSIGHTS ===================== -->
+    <section id="insights" class="defer">
+      <div class="wrap split">
+        <div class="split-copy">
+          <h2>See what lifts you up and what weighs you down</h2>
+          <p>When you read back through your entries, patterns show up. HealMent turns them into simple charts so you can understand your moods and make small changes that last.</p>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Know your triggers.</strong> Learn what raises your mood and what sets off worry.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Watch your progress.</strong> Charts show your moods and how often you write.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Build better habits.</strong> Turn what you notice into steady routines.</span></li>
+          </ul>
+        </div>
 
-              <div class="store-badges-group">
-                <!-- iOS Badge -->
-                <a href="https://apps.apple.com/us/app/healment/id1658941963?platform=iphone" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="store-badge-card"
-                   aria-label="Download Healment on Apple App Store">
-                  <svg class="store-badge-icon" viewBox="0 0 170 170" fill="currentColor">
-                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.31-7.85-11.92-13.32-25.07-16.42-39.46-3.1-14.38-3.1-27.14 0-38.27 3.69-13.25 10.15-23.77 19.38-31.57 9.23-7.8 19.64-11.83 31.23-12.1 4.58 0 9.87 1.16 15.86 3.5 5.99 2.33 9.77 3.5 11.33 3.5 1.79 0 5.86-1.22 12.21-3.67 6.35-2.45 11.75-3.56 16.2-3.32 12.06.66 21.99 5.09 29.8 13.27-10.71 6.53-15.96 15.42-15.74 26.68.22 8.79 3.57 16.14 10.05 22.05 6.47 5.92 14.17 9.38 23.09 10.39-2.45 7.6-5.59 15.42-9.42 23.47zM119.22 33.15c0-6.73 2.45-13.04 7.35-18.93 4.9-5.89 10.97-9.59 18.2-11.11.22 1.33.33 2.45.33 3.35 0 6.62-2.56 13.1-7.68 19.45-5.12 6.35-11.27 10.05-18.45 11.11-.11-1.33-.25-2.62-.25-3.87z"/>
-                  </svg>
-                  <div class="store-badge-text">
-                    <span class="store-badge-sub">Download on the</span>
-                    <span class="store-badge-title">App Store</span>
-                  </div>
-                </a>
+        <div class="art" role="img" aria-label="Animated illustration of charts showing mood patterns">
+          <div class="lottie" data-lottie="assets/lottie/insights.json"></div>
+        </div>
+      </div>
+    </section>
 
-                <!-- Android Badge -->
-                <a href="https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="store-badge-card"
-                   aria-label="Get Healment on Google Play">
-                  <svg class="store-badge-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.609 1.814L13.793 12 3.61 22.186c-.368-.344-.61-.83-.61-1.393V3.207c0-.563.242-1.049.61-1.393zm11.238 11.24L4.85 23.051c.316.096.657.149 1.01.149.52 0 1.017-.128 1.464-.356l9.53-5.498-2.007-4.292zm0-2.108l2.007-4.292L7.324 1.156C6.877.928 6.38.8 5.86.8c-.353 0-.694.053-1.01.149l9.997 9.997zm1.096 1.054l2.585 1.492c1.23.71 1.23 1.867 0 2.577l-2.585 1.492-2.164-2.78 2.164-2.781z"/>
-                  </svg>
-                  <div class="store-badge-text">
-                    <span class="store-badge-sub">Get it on</span>
-                    <span class="store-badge-title">Google Play</span>
-                  </div>
-                </a>
 
-                <!-- QR Modal Button -->
-                <button class="btn-qr-scan open-qr-modal-btn" data-qr-type="ios" title="Scan with Phone Camera">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="14" width="7" height="7"></rect>
-                    <rect x="3" y="14" width="7" height="7"></rect>
-                  </svg>
-                  <span>Scan to Phone</span>
-                </button>
-              </div>
+    <!-- ===================== FEATURES ===================== -->
+    <section id="features" class="defer">
+      <div class="wrap">
+        <div class="center-head">
+          <h2>Everything you need, nothing you don’t</h2>
+          <p>Simple tools to help you feel stronger, calmer and more hopeful every day.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.2-9A5.4 5.4 0 0 1 12 6.2 5.4 5.4 0 0 1 21.2 12c-2.2 4.6-9.2 9-9.2 9z"/></svg>
+            <h3>Mental health tips</h3>
+            <p>Easy-to-follow tips and ideas to help you feel stronger and more hopeful.</p>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16l-4-2-3 2-3-2-4 2z"/><path d="M9 9h6M9 13h4"/></svg>
+            <h3>Guided prompts</h3>
+            <p>Questions that focus your writing and make it easier to journal every day.</p>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+            <h3>Easy journaling</h3>
+            <p>A simple screen for writing about how you feel. No setup, no fuss.</p>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            <h3>Insight dashboard</h3>
+            <p>Charts of your moods and how often you write, so you can see the bigger picture.</p>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.7 6.7 0 0 0 10.7 10.7z"/></svg>
+            <h3>Dark and light themes</h3>
+            <p>Pick the look you like. Dark mode is easy on the eyes when you write at night.</p>
+            <button type="button" class="btn btn-ghost btn-small theme-demo" id="themeDemo">Try it here</button>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+            <h3>Bookmarks</h3>
+            <p>Save the prompts, articles and entries that help you, and find them again fast.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== THE APP ===================== -->
+    <section id="screens" class="screens defer">
+      <div class="wrap">
+        <div class="center-head">
+          <h2>A calm place on every screen</h2>
+          <p>Clean text, soft colours and simple steps from the moment you open the app.</p>
+        </div>
+        <div class="screens-row">
+          <figure>
+            <div class="phone small"><img src="assets/images/screen-journal.webp" alt="HealMent journal entry screen" width="500" height="991" loading="lazy" decoding="async"></div>
+            <figcaption>Write freely</figcaption>
+          </figure>
+          <figure>
+            <div class="phone small"><img src="assets/images/screen-prompts.webp" alt="HealMent guided prompts screen" width="500" height="1014" loading="lazy" decoding="async"></div>
+            <figcaption>Follow a prompt</figcaption>
+          </figure>
+          <figure>
+            <div class="phone small"><img src="assets/images/screen-insights.webp" alt="HealMent mood insights screen" width="500" height="1027" loading="lazy" decoding="async"></div>
+            <figcaption>Spot patterns</figcaption>
+          </figure>
+          <figure>
+            <div class="phone small"><img src="assets/images/screen-summary.webp" alt="HealMent summary screen" width="500" height="1021" loading="lazy" decoding="async"></div>
+            <figcaption>Review your week</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== DOWNLOAD ===================== -->
+    <section id="download" class="cta defer">
+      <div class="wrap">
+        <div class="cta-card">
+          <div class="cta-copy">
+            <h2>Take the first calm step today</h2>
+            <p>Feel clearer, worry less and get to know yourself better. Free for iPhone and Android.</p>
+            <div class="store-row">
+              <a class="store-badge" href="https://apps.apple.com/us/app/healment/id1658941963?platform=iphone" target="_blank" rel="noopener noreferrer" aria-label="Download HealMent on the App Store">
+                <svg viewBox="0 0 170 170" aria-hidden="true"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.31-7.85-11.92-13.32-25.07-16.42-39.46-3.1-14.38-3.1-27.14 0-38.27 3.69-13.25 10.15-23.77 19.38-31.57 9.23-7.8 19.64-11.83 31.23-12.1 4.58 0 9.87 1.16 15.86 3.5 5.99 2.33 9.77 3.5 11.33 3.5 1.79 0 5.86-1.22 12.21-3.67 6.35-2.45 11.75-3.56 16.2-3.32 12.06.66 21.99 5.09 29.8 13.27-10.71 6.53-15.96 15.42-15.74 26.68.22 8.79 3.57 16.14 10.05 22.05 6.47 5.92 14.17 9.38 23.09 10.39-2.45 7.6-5.59 15.42-9.42 23.47zM119.22 33.15c0-6.73 2.45-13.04 7.35-18.93 4.9-5.89 10.97-9.59 18.2-11.11.22 1.33.33 2.45.33 3.35 0 6.62-2.56 13.1-7.68 19.45-5.12 6.35-11.27 10.05-18.45 11.11-.11-1.33-.25-2.62-.25-3.87z"/></svg>
+                <span><small>Download on the</small><strong>App Store</strong></span>
+              </a>
+              <a class="store-badge" href="https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment" target="_blank" rel="noopener noreferrer" aria-label="Get HealMent on Google Play">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.609 1.814L13.793 12 3.61 22.186c-.368-.344-.61-.83-.61-1.393V3.207c0-.563.242-1.049.61-1.393zm11.238 11.24L4.85 23.051c.316.096.657.149 1.01.149.52 0 1.017-.128 1.464-.356l9.53-5.498-2.007-4.292zm0-2.108l2.007-4.292L7.324 1.156C6.877.928 6.38.8 5.86.8c-.353 0-.694.053-1.01.149l9.997 9.997zm1.096 1.054l2.585 1.492c1.23.71 1.23 1.867 0 2.577l-2.585 1.492-2.164-2.78 2.164-2.781z"/></svg>
+                <span><small>Get it on</small><strong>Google Play</strong></span>
+              </a>
             </div>
-
-            <div class="cta-mockup-wrapper">
-              <div class="phone-mockup-container cta-phone-mockup">
-                <picture>
-                  <source srcset="assets/images/screen-summary.webp" type="image/webp">
-                  <img src="assets/images/screen-summary.png" 
-                       alt="Healment Application Summary" 
-                       class="phone-img" 
-                       width="736" 
-                       height="1503" 
-                       loading="lazy" 
-                       decoding="async">
-                </picture>
-              </div>
-            </div>
+            <button class="text-link open-qr" type="button" data-qr="android">Scan a code with your phone</button>
+          </div>
+          <div class="art" role="img" aria-label="Animated illustration of a rocket taking off">
+            <div class="lottie" data-lottie="assets/lottie/launch.json"></div>
           </div>
         </div>
       </div>
@@ -775,127 +367,49 @@
   </main>
 
 
-  <!-- =======================================================================
-       FOOTER
-       ======================================================================= -->
+  <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top-grid">
-        <!-- Brand Info -->
-        <div>
-          <a href="#hero" class="brand-wrap" style="margin-bottom:0.75rem;">
-            <img src="assets/images/logo-healment.svg" alt="HealMent Logo" class="brand-logo-img" width="34" height="34">
-            <span>Heal<strong class="gradient-text">Ment</strong></span>
-          </a>
-          <p class="footer-brand-bio">
-            Journal your way to better mental health. A mindful companion designed to help you process emotions, track personal patterns, and discover inner calm.
-          </p>
-        </div>
-
-        <!-- Navigation Links -->
-        <div>
-          <h4 class="footer-col-title">Navigation</h4>
-          <ul class="footer-links-list">
-            <li class="footer-link-item"><a href="#hero">Overview</a></li>
-            <li class="footer-link-item"><a href="#journaling">Daily Journaling</a></li>
-            <li class="footer-link-item"><a href="#prompts">200+ Guided Prompts</a></li>
-            <li class="footer-link-item"><a href="#patterns">Insights & Patterns</a></li>
-            <li class="footer-link-item"><a href="#features">Core Features</a></li>
-            <li class="footer-link-item"><a href="#app-screens">App Showcase</a></li>
-          </ul>
-        </div>
-
-        <!-- Download & Stores -->
-        <div>
-          <h4 class="footer-col-title">Get Healment</h4>
-          <ul class="footer-links-list">
-            <li class="footer-link-item">
-              <a href="https://apps.apple.com/us/app/healment/id1658941963?platform=iphone" target="_blank" rel="noopener noreferrer">
-                Apple App Store (iOS)
-              </a>
-            </li>
-            <li class="footer-link-item">
-              <a href="https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment" target="_blank" rel="noopener noreferrer">
-                Google Play Store (Android)
-              </a>
-            </li>
-            <li class="footer-link-item">
-              <a href="#" class="open-qr-modal-btn" data-qr-type="ios">
-                Scan QR Code
-              </a>
-            </li>
-            <li class="footer-link-item" style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;">
-              🔒 100% On-Device Privacy Guaranteed
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom-bar">
-        <div>
-          &copy; Copyright 2026 HealMent - All Rights Reserved. (Originally founded 2023)
-        </div>
-        <div>
-          Engineered for ultra-fast, zero-dependency hosting on GitHub Pages.
-        </div>
-      </div>
+    <div class="wrap footer-inner">
+      <img class="footer-logo" src="assets/images/logo-healment.svg" alt="HealMent logo" width="56" height="56" loading="lazy" decoding="async">
+      <p class="footer-copy">© 2026 HealMent. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#features">Features</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#insights">Insights</a>
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <p class="footer-credit">
+        HealMent app &amp; website designed and developed by
+        <a href="https://srikanth.nandiraju.com/" target="_blank" rel="noopener">Srikanth Nandiraju</a>
+        · <a href="https://ai.nandiraju.com/" target="_blank" rel="noopener">Talk to the digital twin of Srikanth Nandiraju</a>
+      </p>
     </div>
   </footer>
 
 
-  <!-- =======================================================================
-       QR CODE MODAL (DESKTOP SCAN TO DOWNLOAD)
-       ======================================================================= -->
-  <div class="modal-backdrop" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" id="closeQrModal" aria-label="Close download dialog">✕</button>
-      
-      <h3 id="qrModalTitle" style="margin-bottom:0.5rem; text-align:center;">Scan to Install on Phone</h3>
-      <p style="text-align:center; font-size:0.92rem;">Open your camera app to install Healment immediately on your phone.</p>
-
-      <div class="qr-tabs" role="tablist">
-        <button class="qr-tab active" data-tab="ios" role="tab">iPhone (App Store)</button>
-        <button class="qr-tab" data-tab="android" role="tab">Android (Google Play)</button>
+  <!-- Phone scan dialog -->
+  <div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <div class="modal-box">
+      <button class="icon-btn modal-close" id="qrClose" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <h2 id="qrTitle" style="font-size:1.5rem">Open HealMent on your phone</h2>
+      <p>Point your camera at the code.</p>
+      <div class="modal-tabs" role="group" aria-label="Phone type">
+        <button type="button" class="chip" data-qr-tab="ios" aria-pressed="true">iPhone</button>
+        <button type="button" class="chip" data-qr-tab="android" aria-pressed="false">Android</button>
       </div>
-
-      <!-- iOS QR Code -->
-      <div class="qr-box-content" id="qrContentIos">
-        <div class="qr-image-wrapper">
-          <img src="assets/images/qr-ios.svg" alt="Scan QR Code for Apple App Store" width="180" height="180">
-        </div>
-        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem;">
-          Direct link to Apple App Store (iOS 14+)
-        </p>
-        <a href="https://apps.apple.com/us/app/healment/id1658941963?platform=iphone" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.85rem; padding:0.5rem 1rem;">
-          Open App Store Link
-        </a>
-      </div>
-
-      <!-- Android QR Code -->
-      <div class="qr-box-content" id="qrContentAndroid" style="display:none;">
-        <div class="qr-image-wrapper">
-          <img src="assets/images/qr-android.svg" alt="Scan QR Code for Google Play Store" width="180" height="180">
-        </div>
-        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem;">
-          Direct link to Google Play Store
-        </p>
-        <a href="https://play.google.com/store/apps/details?id=srikanth.mobileapps.healment" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.85rem; padding:0.5rem 1rem;">
-          Open Google Play Link
-        </a>
-      </div>
+      <div class="qr" id="qrIos"><img data-src="assets/images/qr-ios.svg" alt="Code to open HealMent in the App Store" width="180" height="180"></div>
+      <div class="qr" id="qrAndroid" hidden><img data-src="assets/images/qr-android.svg" alt="Code to open HealMent in Google Play" width="180" height="180"></div>
     </div>
   </div>
 
-
-  <!-- Back to Top Button -->
-  <button class="btn-back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
+  <button class="icon-btn to-top" id="toTop" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <!-- Performance-Oriented Deferred Vanilla JS -->
   <script src="js/main.js" defer></script>
 </body>
 </html>
