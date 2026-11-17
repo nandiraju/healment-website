@@ -26,8 +26,12 @@ privacy and terms text so it matches the new app.
 
 ## Animations
 
-The moving illustrations are Lottie files in `assets/lottie/` (from the UI8 "Whoooa!" pack). They load only when
-you scroll near them. To swap one, replace the file and keep the same name.
+The moving illustration in the download section is a Lottie file in `assets/lottie/` (from the UI8 "Whoooa!" pack).
+It loads only when you scroll near it. To swap it, replace the file and keep the same name.
+
+## Icons
+
+The colourful feature icons in `assets/icons/` come from the UI8 "150 Mental Health Icons" pack (Flat style).
 
 ## Updating the app screenshots
 

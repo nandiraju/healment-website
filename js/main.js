@@ -22,7 +22,7 @@
   function toggleTheme() {
     setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
   }
-  ['themeToggle', 'themeDemo'].forEach(function (id) {
+  ['themeToggle'].forEach(function (id) {
     var b = document.getElementById(id);
     if (b) b.addEventListener('click', toggleTheme);
   });
@@ -117,105 +117,6 @@
       });
     }, { rootMargin: '300px 0px' });
     animEls.forEach(function (el) { lazy.observe(el); });
-  }
-
-  /* ---------- Journal box ---------- */
-  var replies = {
-    calm: 'Peace is a practice. Taking this quiet moment keeps you steady.',
-    anxious: 'It is okay to feel anxious. Be kind to yourself. This feeling will pass.',
-    grateful: 'Gratitude turns your attention to what is good. Hold on to this warmth.',
-    overwhelmed: 'You do not have to carry everything at once. Take just the next slow breath.',
-    reflective: 'Looking inward is how change begins. Take your time.'
-  };
-  var reply = document.getElementById('reply');
-  function say(label, text) {
-    if (!reply) return;
-    reply.textContent = '';
-    var b = document.createElement('strong');
-    b.textContent = label + ' ';
-    reply.appendChild(b);
-    reply.appendChild(document.createTextNode(text));
-  }
-  var moodChips = $$('[data-mood]');
-  moodChips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      moodChips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
-      say('A gentle thought:', replies[chip.dataset.mood] || '');
-    });
-  });
-  var thought = document.getElementById('thought');
-  if (thought) {
-    thought.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter' || e.shiftKey) return;
-      e.preventDefault();
-      var v = thought.value.trim();
-      if (v) say('Well done for writing that down.', 'Putting a thought into words makes it lighter to carry.');
-    });
-  }
-
-  /* ---------- Prompts ---------- */
-  var prompts = [
-    ['anxiety', 'Calm', 'What is one worry on your mind right now, and what tells you it will be okay?'],
-    ['anxiety', 'Calm', 'Name three things you can control today, and one you can let go of.'],
-    ['anxiety', 'Calm', 'If a close friend felt this way, what kind words would you say to them?'],
-    ['anxiety', 'Calm', 'Take a slow breath. How does your body feel right now? Describe it without judging.'],
-    ['gratitude', 'Gratitude', 'What small moment made you smile today, even for a second?'],
-    ['gratitude', 'Gratitude', 'Who are you thankful for, and why?'],
-    ['gratitude', 'Gratitude', 'What everyday comfort do you often overlook that you appreciate today?'],
-    ['gratitude', 'Gratitude', 'What hard time did you get through that made you stronger?'],
-    ['reflection', 'Reflection', 'Which feelings have kept coming back this week, and what might they be telling you?'],
-    ['reflection', 'Reflection', 'How have your daily habits helped or hurt your peace of mind lately?'],
-    ['reflection', 'Reflection', 'Where in your life are you being too hard on yourself?'],
-    ['reflection', 'Reflection', 'What boundary do you need to set to protect your energy?'],
-    ['growth', 'Growth', 'What is one small step you can take tomorrow to feel more at peace?'],
-    ['growth', 'Growth', 'Which belief about yourself would you like to gently let go of?'],
-    ['growth', 'Growth', 'What does a balanced life look like for you right now?'],
-    ['evening', 'Evening', 'What can you let go of before sleep so tomorrow starts fresh?'],
-    ['evening', 'Evening', 'Celebrate one win from today, however small.'],
-    ['evening', 'Evening', 'What did your body and mind need today? Did you make room for it?']
-  ];
-  var cat = 'all';
-  var lastIdx = -1;
-  var tagEl = document.getElementById('promptTag');
-  var textEl = document.getElementById('promptText');
-  var catChips = $$('[data-cat]');
-
-  function showPrompt() {
-    if (!tagEl || !textEl) return;
-    var pool = prompts.filter(function (p) { return cat === 'all' || p[0] === cat; });
-    if (!pool.length) return;
-    var i;
-    do { i = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && pool[i] === prompts[lastIdx]);
-    lastIdx = prompts.indexOf(pool[i]);
-    textEl.style.opacity = '0';
-    setTimeout(function () {
-      tagEl.textContent = pool[i][1];
-      textEl.textContent = '“' + pool[i][2] + '”';
-      textEl.style.opacity = '1';
-    }, reduceMotion ? 0 : 120);
-  }
-  catChips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      catChips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
-      cat = chip.dataset.cat;
-      showPrompt();
-    });
-  });
-  var shuffle = document.getElementById('shuffle');
-  if (shuffle) shuffle.addEventListener('click', showPrompt);
-
-  var copyBtn = document.getElementById('copyPrompt');
-  if (copyBtn && textEl) {
-    copyBtn.addEventListener('click', function () {
-      var text = textEl.textContent.replace(/^“|”$/g, '');
-      var done = function (msg) {
-        copyBtn.textContent = msg;
-        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function () { done('Copied'); }, function () { done('Could not copy'); });
-      } else { done('Could not copy'); }
-    });
   }
 
   /* ---------- Phone scan dialog ---------- */

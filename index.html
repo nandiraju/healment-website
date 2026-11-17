@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KXBGJLKK"></script>
 <script>
@@ -15,8 +15,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://healment.cend.in/">
   <meta name="author" content="Srikanth Nandiraju">
-  <meta name="theme-color" content="#0e1020" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#fbfaff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#fbfaff">
   <meta name="apple-itunes-app" content="app-id=1658941963">
 
   <!-- Open Graph -->
@@ -45,7 +44,7 @@
   <script>
     try {
       var t = localStorage.getItem('healment_theme');
-      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (!t) t = 'light';
       document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
   </script>
@@ -128,15 +127,10 @@
           <li><a href="#prompts">Prompts</a></li>
           <li><a href="#insights">Insights</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#screens">The app</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light colours">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
         <a class="btn btn-primary btn-small" href="#download">Get the app</a>
         <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -179,33 +173,20 @@
 
     <!-- ===================== JOURNALING ===================== -->
     <section id="journaling" class="defer">
-      <div class="wrap split">
-        <div class="split-copy">
-          <h2>Get your thoughts out of your head</h2>
-          <p>Writing about your feelings helps you understand them. It gives you a quiet place to think, especially when you feel sad, angry or anxious.</p>
-          <ul class="ticks">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>A safe space.</strong> Say what you feel without being judged.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Less stress.</strong> Sort out tangled emotions one line at a time.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>A clearer mind.</strong> Put it on the page so you can focus on what matters.</span></li>
-          </ul>
-
-          <div class="journal-box">
-            <h3 id="moodQ">How are you feeling right now?</h3>
-            <div class="chips" role="group" aria-labelledby="moodQ">
-              <button type="button" class="chip" data-mood="calm" aria-pressed="true">Calm</button>
-              <button type="button" class="chip" data-mood="anxious" aria-pressed="false">Anxious</button>
-              <button type="button" class="chip" data-mood="grateful" aria-pressed="false">Grateful</button>
-              <button type="button" class="chip" data-mood="overwhelmed" aria-pressed="false">Overwhelmed</button>
-              <button type="button" class="chip" data-mood="reflective" aria-pressed="false">Reflective</button>
-            </div>
-            <label class="field-label" for="thought">Write one thought</label>
-            <textarea id="thought" class="field" placeholder="Type a thought and press Enter"></textarea>
-            <p class="reply" id="reply" aria-live="polite"><strong>A gentle thought:</strong> Peace is a practice. Taking this quiet moment keeps you steady.</p>
+      <div class="wrap">
+        <div class="split flip">
+          <div class="split-copy">
+            <h2>Get your thoughts out of your head</h2>
+            <p>Writing about your feelings helps you understand them. It gives you a quiet place to think, especially when you feel sad, angry or anxious.</p>
+            <ul class="ticks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>A safe space.</strong> Say what you feel without being judged.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Less stress.</strong> Sort out tangled emotions one line at a time.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>A clearer mind.</strong> Put it on the page so you can focus on what matters.</span></li>
+            </ul>
           </div>
-        </div>
-
-        <div class="art" role="img" aria-label="Animated illustration of a person writing in a journal">
-          <div class="lottie" data-lottie="assets/lottie/journal.json"></div>
+          <div class="phone">
+            <img src="assets/images/screen-journal.webp" alt="HealMent journal entry screen" width="500" height="991" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
     </section>
@@ -213,33 +194,20 @@
 
     <!-- ===================== PROMPTS ===================== -->
     <section id="prompts" class="defer">
-      <div class="wrap split flip">
-        <div class="split-copy">
-          <h2>Never stare at a blank page</h2>
-          <p>Prompts give your writing a starting point so you can look at different parts of your life. HealMent has over 200 of them, and you can add your own.</p>
-
-          <div class="prompt-box">
-            <div class="chips" role="group" aria-label="Prompt topics">
-              <button type="button" class="chip" data-cat="all" aria-pressed="true">All</button>
-              <button type="button" class="chip" data-cat="anxiety" aria-pressed="false">Calm</button>
-              <button type="button" class="chip" data-cat="gratitude" aria-pressed="false">Gratitude</button>
-              <button type="button" class="chip" data-cat="reflection" aria-pressed="false">Reflection</button>
-              <button type="button" class="chip" data-cat="growth" aria-pressed="false">Growth</button>
-              <button type="button" class="chip" data-cat="evening" aria-pressed="false">Evening</button>
-            </div>
-            <div class="prompt-card" aria-live="polite">
-              <span class="prompt-tag" id="promptTag">Calm</span>
-              <p class="prompt-text" id="promptText">“What is one worry on your mind right now, and what tells you it will be okay?”</p>
-            </div>
-            <div class="prompt-actions">
-              <button type="button" class="btn btn-primary" id="shuffle">New prompt</button>
-              <button type="button" class="btn btn-ghost" id="copyPrompt">Copy</button>
-            </div>
+      <div class="wrap">
+        <div class="split">
+          <div class="split-copy">
+            <h2>Never stare at a blank page</h2>
+            <p>Prompts give your writing a starting point so you can look at different parts of your life. HealMent has over 200 of them, and you can add your own.</p>
+            <ul class="ticks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>200+ prompts.</strong> Calm, gratitude, reflection, growth and evening topics.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Your own words.</strong> Write and save prompts that fit your life.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Keep your favourites.</strong> Bookmark the ones that help.</span></li>
+            </ul>
           </div>
-        </div>
-
-        <div class="art" role="img" aria-label="Animated illustration of a person with gentle reminders">
-          <div class="lottie" data-lottie="assets/lottie/prompts.json"></div>
+          <div class="phone">
+            <img src="assets/images/screen-prompts.webp" alt="HealMent guided prompts screen" width="500" height="1014" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
     </section>
@@ -247,7 +215,7 @@
 
     <!-- ===================== INSIGHTS ===================== -->
     <section id="insights" class="defer">
-      <div class="wrap split">
+      <div class="wrap split flip">
         <div class="split-copy">
           <h2>See what lifts you up and what weighs you down</h2>
           <p>When you read back through your entries, patterns show up. HealMent turns them into simple charts so you can understand your moods and make small changes that last.</p>
@@ -257,9 +225,8 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg><span><strong>Build better habits.</strong> Turn what you notice into steady routines.</span></li>
           </ul>
         </div>
-
-        <div class="art" role="img" aria-label="Animated illustration of charts showing mood patterns">
-          <div class="lottie" data-lottie="assets/lottie/insights.json"></div>
+        <div class="phone">
+          <img src="assets/images/screen-insights.webp" alt="HealMent mood insights screen" width="500" height="1027" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
@@ -275,65 +242,35 @@
 
         <div class="feature-grid">
           <article class="feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.2-9A5.4 5.4 0 0 1 12 6.2 5.4 5.4 0 0 1 21.2 12c-2.2 4.6-9.2 9-9.2 9z"/></svg>
+            <img src="assets/icons/tips.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
             <h3>Mental health tips</h3>
             <p>Easy-to-follow tips and ideas to help you feel stronger and more hopeful.</p>
           </article>
           <article class="feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16l-4-2-3 2-3-2-4 2z"/><path d="M9 9h6M9 13h4"/></svg>
+            <img src="assets/icons/prompts.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
             <h3>Guided prompts</h3>
             <p>Questions that focus your writing and make it easier to journal every day.</p>
           </article>
           <article class="feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+            <img src="assets/icons/journal.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
             <h3>Easy journaling</h3>
             <p>A simple screen for writing about how you feel. No setup, no fuss.</p>
           </article>
           <article class="feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            <img src="assets/icons/mood.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
             <h3>Insight dashboard</h3>
             <p>Charts of your moods and how often you write, so you can see the bigger picture.</p>
           </article>
           <article class="feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.7 6.7 0 0 0 10.7 10.7z"/></svg>
+            <img src="assets/icons/themes.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
             <h3>Dark and light themes</h3>
             <p>Pick the look you like. Dark mode is easy on the eyes when you write at night.</p>
-            <button type="button" class="btn btn-ghost btn-small theme-demo" id="themeDemo">Try it here</button>
           </article>
           <article class="feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+            <img src="assets/icons/bookmarks.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
             <h3>Bookmarks</h3>
             <p>Save the prompts, articles and entries that help you, and find them again fast.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ===================== THE APP ===================== -->
-    <section id="screens" class="screens defer">
-      <div class="wrap">
-        <div class="center-head">
-          <h2>A calm place on every screen</h2>
-          <p>Clean text, soft colours and simple steps from the moment you open the app.</p>
-        </div>
-        <div class="screens-row">
-          <figure>
-            <div class="phone small"><img src="assets/images/screen-journal.webp" alt="HealMent journal entry screen" width="500" height="991" loading="lazy" decoding="async"></div>
-            <figcaption>Write freely</figcaption>
-          </figure>
-          <figure>
-            <div class="phone small"><img src="assets/images/screen-prompts.webp" alt="HealMent guided prompts screen" width="500" height="1014" loading="lazy" decoding="async"></div>
-            <figcaption>Follow a prompt</figcaption>
-          </figure>
-          <figure>
-            <div class="phone small"><img src="assets/images/screen-insights.webp" alt="HealMent mood insights screen" width="500" height="1027" loading="lazy" decoding="async"></div>
-            <figcaption>Spot patterns</figcaption>
-          </figure>
-          <figure>
-            <div class="phone small"><img src="assets/images/screen-summary.webp" alt="HealMent summary screen" width="500" height="1021" loading="lazy" decoding="async"></div>
-            <figcaption>Review your week</figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -379,6 +316,10 @@
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="terms_of_service.html">Terms of Service</a>
         <a href="contact.html">Contact</a>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light colours">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
       </nav>
       <p class="footer-credit">
         HealMent app &amp; website designed and developed by

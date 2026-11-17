@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KXBGJLKK"></script>
 <script>
@@ -13,8 +13,7 @@
   <meta name="description" content="How HealMent handles your information: your journal stays on your phone, with no account needed.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://healment.cend.in/privacy_policy.html">
-  <meta name="theme-color" content="#0e1020" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#fbfaff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#fbfaff">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="HealMent">
   <meta property="og:url" content="https://healment.cend.in/privacy_policy.html">
@@ -27,7 +26,7 @@
   <script>
     try {
       var t = localStorage.getItem('healment_theme');
-      if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (!t) t = 'light';
       document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
   </script>
@@ -64,10 +63,6 @@
         </ul>
       </nav>
       <div class="nav-actions">
-        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light colours">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
         <a class="btn btn-primary btn-small" href="index.html#download">Get the app</a>
         <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -150,6 +145,10 @@
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="terms_of_service.html">Terms of Service</a>
         <a href="contact.html">Contact</a>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch between dark and light colours">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
       </nav>
       <p class="footer-credit">
         HealMent app &amp; website designed and developed by

@@ -188,15 +188,9 @@ section { padding-block: 6rem; }
 
 .hero-visual { position: relative; display: grid; place-items: center; }
 
-/* ---------- Phone frame (real screenshots) ---------- */
-.phone {
-  position: relative; width: 100%; max-width: 330px; margin-inline: auto;
-  border-radius: 46px; padding: 9px; background: #07080f;
-  box-shadow: 0 0 0 1.5px #343858 inset, var(--shadow);
-}
-.phone img { width: 100%; height: auto; border-radius: 38px; background: #0d1024; }
-.phone.small { max-width: 250px; border-radius: 38px; padding: 7px; }
-.phone.small img { border-radius: 31px; }
+/* ---------- Phone screenshots (each image already includes its own phone frame) ---------- */
+.phone { position: relative; width: 100%; max-width: 360px; margin-inline: auto; }
+.phone img { width: 100%; height: auto; filter: drop-shadow(0 24px 32px rgb(0 0 0 / .28)); }
 
 /* ---------- Animated illustration panel ---------- */
 .art {
@@ -214,13 +208,7 @@ section { padding-block: 6rem; }
 .ticks li strong { color: var(--ink); font-weight: 600; }
 .ticks svg { width: 22px; height: 22px; margin-top: 3px; color: var(--accent); }
 
-/* ---------- Journal box ---------- */
-.journal-box {
-  width: 100%; background: var(--bg-raised); border: 1px solid var(--line);
-  border-radius: var(--radius-m); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;
-}
-.journal-box h3 { font-size: 1.0625rem; }
-.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+/* ---------- Pills (used in the phone scan dialog) ---------- */
 .chip {
   min-height: 44px; padding: 0 1.1rem; border-radius: 999px; border: 1px solid var(--line);
   background: transparent; color: var(--ink-muted); font-size: 1rem; font-weight: 500; cursor: pointer;
@@ -230,44 +218,11 @@ section { padding-block: 6rem; }
 .chip:hover { border-color: var(--accent); color: var(--ink); }
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
-.field-label { font-weight: 600; font-size: .9375rem; color: var(--ink); }
-.field {
-  width: 100%; min-height: 96px; resize: vertical; padding: .9rem 1rem;
-  background: var(--bg-sunken); color: var(--ink); caret-color: var(--accent);
-  border: 1px solid var(--line); border-radius: var(--radius-s);
-  font: inherit; font-size: 1rem; line-height: 1.5;
-  transition: border-color .15s ease;
-}
-.field::placeholder { color: var(--ink-muted); opacity: .8; }
-.field:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-color: transparent; }
-.reply { color: var(--ink); background: var(--bg-sunken); border-radius: var(--radius-s); padding: .9rem 1rem; font-size: 1rem; min-height: 3.5rem; }
-.reply strong { font-weight: 600; }
-
-/* ---------- Prompt explorer ---------- */
-.prompt-box {
-  width: 100%; background: var(--bg-raised); border: 1px solid var(--line);
-  border-radius: var(--radius-m); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;
-}
-.prompt-card {
-  background: var(--bg-sunken); border-radius: var(--radius-s); padding: 1.5rem;
-  min-height: 9.5rem; display: flex; flex-direction: column; justify-content: center; gap: .5rem;
-}
-.prompt-tag { font-size: .9375rem; font-weight: 600; color: var(--accent); }
-.prompt-text { font-size: 1.3125rem; font-weight: 600; line-height: 1.4; color: var(--ink); transition: opacity .15s ease; }
-.prompt-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
-
 /* ---------- Features ---------- */
 .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 2.5rem; }
 .feature { display: flex; flex-direction: column; gap: .75rem; }
-.feature svg { width: 28px; height: 28px; color: var(--accent); margin-bottom: .25rem; }
+.feature img { width: 56px; height: 56px; margin-bottom: .25rem; }
 .feature p { font-size: 1.0625rem; }
-.theme-demo { margin-top: .5rem; align-self: flex-start; }
-
-/* ---------- Screens ---------- */
-.screens { background: var(--bg-sunken); }
-.screens-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; align-items: start; }
-.screens-row figure { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
-.screens-row figcaption { font-weight: 600; text-align: center; }
 
 /* ---------- Final call ---------- */
 .cta { padding-block: 6rem 7rem; }
@@ -350,7 +305,6 @@ section { padding-block: 6rem; }
   .ticks { text-align: left; }
   .store-row { justify-content: center; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  .screens-row { grid-template-columns: repeat(2, 1fr); gap: 3rem 2rem; }
   .cta-card { padding: 3rem 2rem; }
   .art { max-width: 440px; }
 }
@@ -376,14 +330,10 @@ section { padding-block: 6rem; }
   .store-row { flex-direction: column; width: 100%; max-width: 320px; }
   .store-badge { justify-content: center; width: 100%; }
   .feature-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .screens-row { grid-template-columns: 1fr 1fr; gap: 2.5rem 1rem; }
-  .phone.small { max-width: 190px; padding: 5px; border-radius: 30px; }
-  .phone.small img { border-radius: 25px; }
   .contact-grid { grid-template-columns: 1fr; }
   .art { aspect-ratio: 4 / 3; border-radius: var(--radius-m); }
   .cta-card { padding: 2.5rem 1.25rem; }
-  .journal-box, .prompt-box { padding: 1.1rem; }
-  .prompt-actions .btn { flex: 1; }
+  .phone { max-width: 300px; }
 }
 
 /* ---------- Reduced motion ---------- */
